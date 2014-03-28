@@ -228,7 +228,7 @@ public class StoryViewFragment extends Fragment {
 			// as a ringtone and play it back as such. Use the RingtonManager function getRingtone on
 			// the audioLinkPath to create the ringtone
 			
-			final Ringtone ringtone = RingtoneManager.getRingtone(getActivity(), Uri.fromFile(new File(audioLinkPath)));
+			final Ringtone ringtone = RingtoneManager.getRingtone(getActivity(), Uri.parse(audioLinkPath));
 			
 			
 			audioButton.setOnClickListener(new OnClickListener() {
@@ -267,7 +267,7 @@ public class StoryViewFragment extends Fragment {
 			// TODO - Now we need to set the URI for the VideoView, use the setVideoURI function on the
 			//  videoLinkPath string from before.
 			
-			videoLinkView.setVideoURI(Uri.fromFile(new File(videoLinkPath)));
+			videoLinkView.setVideoURI(Uri.parse(videoLinkPath));
 			
 			
 			// TODO - Start the video, using the start function on the VideoView

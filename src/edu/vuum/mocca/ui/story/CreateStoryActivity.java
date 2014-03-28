@@ -243,7 +243,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 		
 		// TODO - Add the filename to the Intent as an extra. Use the Intent-extra name
 		// from the SoundRecordActivity class, EXTRA_OUTPUT
-		recordIntent.putExtra(SoundRecordActivity.EXTRA_OUTPUT, getOutputMediaFile(MEDIA_TYPE_AUDIO).getAbsolutePath());
+		recordIntent.putExtra(SoundRecordActivity.EXTRA_OUTPUT, getOutputMediaFileUri(MEDIA_TYPE_AUDIO).toString());
 
 		
 		// TODO - Start a new activity for result, using the new intent and the request
@@ -264,20 +264,18 @@ public class CreateStoryActivity extends StoryActivityBase {
 		
 		// TODO - Set the imagePath for this image file using the pre-made function
 		// getOutputMediaFile to create a new filename for this specific image;
-		 File file = getOutputMediaFile(MEDIA_TYPE_IMAGE);
-		 fragment.imagePath = Uri.parse(file.getAbsolutePath());
+		 Uri fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+		 fragment.imagePath = fileUri;
 
 		
 		// TODO - Add the filename to the Intent as an extra. Use the Intent-extra name
 		// from the MediaStore class, EXTRA_OUTPUT
-			takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fragment.imagePath);
+			takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 
 		
 		// TODO - Start a new activity for result, using the new intent and the request
 		// code CAMERA_PIC_REQUEST
-		    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
 		        startActivityForResult(takePictureIntent, CAMERA_PIC_REQUEST);
-		    }
 
 	}
 
@@ -311,9 +309,7 @@ public class CreateStoryActivity extends StoryActivityBase {
 		
 		// TODO - Start a new activity for result, using the new intent and the request
 		// code CAMERA_VIDEO_REQUEST
-		    if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
 		        startActivityForResult(takeVideoIntent, CAMERA_VIDEO_REQUEST);
-		    }		
 
 	
 	}
